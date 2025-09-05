@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   <style>
     body {
       margin: 0;
@@ -13,72 +14,78 @@
       align-items: center;
       min-height: 100vh;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #b71c1c, #e53935);
+      background: linear-gradient(135deg, #000000, #111111);
     }
 
     .login-container {
-      background: #fff;
+      background: #1a1a1a;
       padding: 50px 40px;
       border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 8px 25px rgba(255, 102, 0, 0.3);
       text-align: center;
       width: 380px;
+      border: 1px solid #ff6600;
     }
 
     .login-container h1 {
       font-size: 2rem;
       margin-bottom: 10px;
-      color: #b71c1c;
+      color: #ff6600;
     }
 
     .login-container h4 {
       font-size: 1.1rem;
       margin-bottom: 20px;
-      color: #444;
+      color: #ccc;
     }
 
     .login-container img {
       margin: 10px 0 20px;
       border-radius: 8px;
+      border: 2px solid #ff6600;
     }
 
     .login-container input {
       width: 100%;
       padding: 14px;
       margin: 12px 0;
-      border: 1px solid #ccc;
+      border: 1px solid #444;
       border-radius: 8px;
       outline: none;
       font-size: 1rem;
-      transition: border 0.3s ease;
+      background: #000;
+      color: #fff;
+      transition: border 0.3s ease, background 0.3s ease;
     }
 
     .login-container input:focus {
-      border-color: #e53935;
+      border-color: #ff6600;
+      background: #111;
     }
 
     .login-container button {
       width: 100%;
       padding: 14px;
       margin-top: 20px;
-      background: #e53935;
+      background: #ff6600;
       border: none;
       border-radius: 8px;
-      color: #fff;
+      color: #000;
       font-size: 1.1rem;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s;
     }
 
     .login-container button:hover {
-      background: #b71c1c;
+      background: #ff8533;
+      transform: scale(1.05);
     }
 
     .login-container a {
       display: block;
       margin-top: 20px;
-      color: #e53935;
+      color: #ff6600;
       text-decoration: none;
       font-size: 0.95rem;
     }
@@ -87,8 +94,6 @@
       text-decoration: underline;
     }
   </style>
-  <!-- Sweet Alerts css -->
-  <link href="<?php echo BASE_URL ?>src/view/pp/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
   <script>
     const base_url = '<?php echo BASE_URL; ?>';
     const base_url_server = '<?php echo BASE_URL_SERVER; ?>';
@@ -107,11 +112,11 @@
     </form>
     <a href="#">¿Olvidaste tu contraseña?</a>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </body>
 <script src="<?php echo BASE_URL; ?>src/view/js/sesion.js"></script>
 <!-- Sweet Alerts Js-->
-<script src="<?php echo BASE_URL ?>src/view/pp/plugins/sweetalert2/sweetalert2.min.js"></script>
-
 </html>
+
 
 
