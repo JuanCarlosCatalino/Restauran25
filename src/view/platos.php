@@ -1,183 +1,173 @@
-<section class="platos-section">
-  <h2>🍴 Gestión de Platos</h2>
+<!-- =================================================== -->
+<!-- INICIO DE LA SECCIÓN DEL CUERPO - GESTIÓN DE PLATOS -->
+<!-- =================================================== -->
+<section class="container-fluid">
+    <div class="row" style="padding-top: 56px;"> <!-- Padding para la barra de navegación fija -->
 
-  <!-- Formulario de registro -->
-  <div class="form-container">
-    <h3>Registrar Nuevo Plato</h3>
-    <form id="frm_platos">
-      <input type="text" id="nombre" name="nombre" placeholder="Nombre del Plato" required>
-      <input type="number" id="precio" name="precio" placeholder="Precio (S/.)" required>
-      <textarea id="descripcion" name="descripcion" placeholder="Descripción" required></textarea>
-      <button type="submit">Registrar Plato</button>
-    </form>
-  </div>
+        <!-- Barra Lateral de Navegación (simulada para contexto) -->
+        <div class="col-lg-2 bg-white vh-100 border-end d-none d-lg-block">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#">
+                            <i class="bi bi-speedometer2 me-2"></i> Resumen
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold" aria-current="page" href="#">
+                            <i class="bi bi-card-checklist me-2"></i> Platos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#">
+                            <i class="bi bi-shop me-2"></i> Restaurantes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#">
+                            <i class="bi bi-bar-chart-line me-2"></i> Reportes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#">
+                            <i class="bi bi-gear me-2"></i> Configuración
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-  <!-- Lista de platos -->
-  <div class="tabla-container">
-    <h3>Lista de Platos</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Precio</th>
-          <th>Descripción</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody id="tabla_platos">
-        <tr>
-          <td>Lomo Saltado</td>
-          <td>S/ 25.00</td>
-          <td>Carne salteada con papas fritas y arroz</td>
-          <td>
-            <button class="edit">✏️</button>
-            <button class="delete">🗑️</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Ceviche</td>
-          <td>S/ 20.00</td>
-          <td>Pescado fresco marinado en limón</td>
-          <td>
-            <button class="edit">✏️</button>
-            <button class="delete">🗑️</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        <!-- Contenido Principal: Gestión de Platos -->
+        <main class="col-lg-10 p-4">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                <h1 class="h2">Gestión de Platos</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">
+                            <i class="bi bi-funnel"></i> Filtros
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">
+                            <i class="bi bi-upload"></i> Exportar
+                        </button>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-primary">
+                        <i class="bi bi-plus-circle-fill me-1"></i>
+                        Añadir Nuevo Plato
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tabla de Platos -->
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Nombre del Plato</th>
+                            <th scope="col">Categoría</th>
+                            <th scope="col">Restaurante</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col" class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/80x60" class="img-thumbnail" alt="Plato"></td>
+                            <td class="fw-bold">Hamburguesa Gourmet</td>
+                            <td>Carnes</td>
+                            <td>El Buen Sabor</td>
+                            <td>$18.50</td>
+                            <td><span class="badge bg-success">Disponible</span></td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/80x60" class="img-thumbnail" alt="Plato"></td>
+                            <td class="fw-bold">Pizza Cuatro Quesos</td>
+                            <td>Pizzas</td>
+                            <td>La Esquina del Chef</td>
+                            <td>$22.00</td>
+                            <td><span class="badge bg-success">Disponible</span></td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/80x60" class="img-thumbnail" alt="Plato"></td>
+                            <td class="fw-bold">Sushi Variado (12 pz)</td>
+                            <td>Asiática</td>
+                            <td>Sabor a Mar</td>
+                            <td>$25.00</td>
+                            <td><span class="badge bg-warning text-dark">Pocas unidades</span></td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/80x60" class="img-thumbnail" alt="Plato"></td>
+                            <td class="fw-bold">Tiramisú</td>
+                            <td>Postres</td>
+                            <td>El Buen Sabor</td>
+                            <td>$9.50</td>
+                            <td><span class="badge bg-danger">Agotado</span></td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/80x60" class="img-thumbnail" alt="Plato"></td>
+                            <td class="fw-bold">Ensalada de Quinoa</td>
+                            <td>Ensaladas</td>
+                            <td>La Esquina del Chef</td>
+                            <td>$14.00</td>
+                            <td><span class="badge bg-success">Disponible</span></td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Paginación -->
+            <nav aria-label="Navegación de páginas de platos">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                    </li>
+                    <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Siguiente</a>
+                    </li>
+                </ul>
+            </nav>
+        </main>
+    </div>
 </section>
-
-<style>
-  .platos-section {
-    padding: 30px;
-    background: #000;
-    color: #fff;
-  }
-
-  .platos-section h2 {
-    color: #ff6600;
-    font-size: 28px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .form-container {
-    background: #111;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #ff6600;
-    margin-bottom: 30px;
-  }
-
-  .form-container h3 {
-    margin-bottom: 15px;
-    color: #ff6600;
-  }
-
-  .form-container form input,
-  .form-container form textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border: 1px solid #444;
-    border-radius: 8px;
-    background: #000;
-    color: #fff;
-    font-size: 1rem;
-    outline: none;
-    transition: border 0.3s ease;
-  }
-
-  .form-container form input:focus,
-  .form-container form textarea:focus {
-    border-color: #ff6600;
-  }
-
-  .form-container button {
-    background: #ff6600;
-    color: #000;
-    padding: 12px;
-    width: 100%;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s, transform 0.2s;
-  }
-
-  .form-container button:hover {
-    background: #ff8533;
-    transform: scale(1.05);
-  }
-
-  .tabla-container {
-    background: #111;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #ff6600;
-  }
-
-  .tabla-container h3 {
-    margin-bottom: 15px;
-    color: #ff6600;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    color: #fff;
-  }
-
-  table th, table td {
-    border-bottom: 1px solid #444;
-    padding: 12px;
-    text-align: left;
-  }
-
-  table th {
-    background: #222;
-    color: #ff6600;
-  }
-
-  table tr:hover {
-    background: #1a1a1a;
-  }
-
-  .edit, .delete {
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    margin: 2px;
-  }
-
-  .edit {
-    background: #ff6600;
-    color: #000;
-  }
-
-  .edit:hover {
-    background: #ff8533;
-  }
-
-  .delete {
-    background: #b71c1c;
-    color: #fff;
-  }
-
-  .delete:hover {
-    background: #e53935;
-  }
-</style>
-
-<script>
-  // Ejemplo simple de interacción
-  document.getElementById("frm_platos").addEventListener("submit", function(e){
-    e.preventDefault();
-    alert("✅ Plato registrado con éxito (ejemplo)");
-  });
-</script>
+<!-- ================================================= -->
+<!-- FIN DE LA SECCIÓN DEL CUERPO - GESTIÓN DE PLATOS -->
+<!-- ================================================= -->
