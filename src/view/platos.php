@@ -50,7 +50,7 @@
                             <i class="bi bi-upload"></i> Exportar
                         </button>
                     </div>
-                    <button type="button" class="btn btn-sm btn-primary">
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#platoModal">
                         <i class="bi bi-plus-circle-fill me-1"></i>
                         Añadir Nuevo Plato
                     </button>
@@ -168,6 +168,61 @@
         </main>
     </div>
 </section>
+<!-- modal registrar plato -->
+<div class="modal fade" id="platoModal" tabindex="-1" aria-labelledby="platoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 shadow-lg">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title fw-bold" id="platoModalLabel">
+                    <span class="text-primary me-2">🍽️</span>Registrar Nuevo Plato
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form id="frm_new_plato">
+                    <div class="mb-3">
+                        <label for="nombrePlato" class="form-label fw-semibold">Nombre del Plato</label>
+                        <input type="text" class="form-control rounded-3" id="nombrePlato" placeholder="Ej: Pizza Margarita" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcionPlato" class="form-label fw-semibold">Descripción</label>
+                        <textarea class="form-control rounded-3" id="descripcionPlato" rows="3" placeholder="Una deliciosa pizza con tomates frescos y albahaca..."></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="precioPlato" class="form-label fw-semibold">Precio</label>
+                            <div class="input-group">
+                                <span class="input-group-text rounded-start-3">$</span>
+                                <input type="number" class="form-control rounded-end-3" id="precioPlato" placeholder="Ej: 15.50" step="0.01" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="categoriaPlato" class="form-label fw-semibold">Categoría</label>
+                            <select class="form-select rounded-3" id="categoriaPlato" required>
+                                <option selected disabled value="">Selecciona una...</option>
+                                <option>Entrada</option>
+                                <option>Plato Principal</option>
+                                <option>Postre</option>
+                                <option>Bebida</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="imagenPlato" class="form-label fw-semibold">Imagen del Plato</label>
+                        <input class="form-control" type="file" id="imagenPlato">
+                    </div>
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill" onclick="registrarPlato()">
+                            Guardar Plato
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- ================================================= -->
 <!-- FIN DE LA SECCIÓN DEL CUERPO - GESTIÓN DE PLATOS -->
 <!-- ================================================= -->
+
+<script src="<?php echo BASE_URL;?>src/view/js/plato.js"></script>
