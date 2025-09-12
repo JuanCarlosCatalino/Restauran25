@@ -13,23 +13,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">
-                                <i class="bi bi-card-checklist me-2"></i> Platos
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">
+                            <a class="nav-link text-dark" href="<?php echo BASE_URL;?>restaurantes">
                                 <i class="bi bi-shop me-2"></i> Restaurantes
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">
-                                <i class="bi bi-bar-chart-line me-2"></i> Reportes
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">
-                                <i class="bi bi-gear me-2"></i> Configuración
                             </a>
                         </li>
                     </ul>

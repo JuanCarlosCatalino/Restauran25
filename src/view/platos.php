@@ -62,109 +62,16 @@
                 <table class="table table-striped table-hover align-middle">
                     <thead class="table-dark">
                         <tr>
-                            <th scope="col">Imagen</th>
                             <th scope="col">Nombre del Plato</th>
-                            <th scope="col">Categoría</th>
-                            <th scope="col">Restaurante</th>
                             <th scope="col">Precio</th>
-                            <th scope="col">Estado</th>
                             <th scope="col" class="text-center">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td><img src="https://via.placeholder.com/80x60" class="img-thumbnail" alt="Plato"></td>
-                            <td class="fw-bold">Hamburguesa Gourmet</td>
-                            <td>Carnes</td>
-                            <td>El Buen Sabor</td>
-                            <td>$18.50</td>
-                            <td><span class="badge bg-success">Disponible</span></td>
-                            <td class="text-center">
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://via.placeholder.com/80x60" class="img-thumbnail" alt="Plato"></td>
-                            <td class="fw-bold">Pizza Cuatro Quesos</td>
-                            <td>Pizzas</td>
-                            <td>La Esquina del Chef</td>
-                            <td>$22.00</td>
-                            <td><span class="badge bg-success">Disponible</span></td>
-                            <td class="text-center">
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://via.placeholder.com/80x60" class="img-thumbnail" alt="Plato"></td>
-                            <td class="fw-bold">Sushi Variado (12 pz)</td>
-                            <td>Asiática</td>
-                            <td>Sabor a Mar</td>
-                            <td>$25.00</td>
-                            <td><span class="badge bg-warning text-dark">Pocas unidades</span></td>
-                            <td class="text-center">
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://via.placeholder.com/80x60" class="img-thumbnail" alt="Plato"></td>
-                            <td class="fw-bold">Tiramisú</td>
-                            <td>Postres</td>
-                            <td>El Buen Sabor</td>
-                            <td>$9.50</td>
-                            <td><span class="badge bg-danger">Agotado</span></td>
-                            <td class="text-center">
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://via.placeholder.com/80x60" class="img-thumbnail" alt="Plato"></td>
-                            <td class="fw-bold">Ensalada de Quinoa</td>
-                            <td>Ensaladas</td>
-                            <td>La Esquina del Chef</td>
-                            <td>$14.00</td>
-                            <td><span class="badge bg-success">Disponible</span></td>
-                            <td class="text-center">
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                    <tbody id="tbody_platos">
+                        <!-- js -->
                     </tbody>
                 </table>
             </div>
-
-            <!-- Paginación -->
-            <nav aria-label="Navegación de páginas de platos">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
-                    </li>
-                    <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Siguiente</a>
-                    </li>
-                </ul>
-            </nav>
         </main>
     </div>
 </section>
@@ -182,37 +89,23 @@
                 <form id="frm_new_plato">
                     <div class="mb-3">
                         <label for="nombrePlato" class="form-label fw-semibold">Nombre del Plato</label>
-                        <input type="text" class="form-control rounded-3" id="nombrePlato" placeholder="Ej: Pizza Margarita" required>
+                        <input type="text" class="form-control rounded-3" id="nombrePlato" name="nombrePlato" placeholder="Ej: Pizza Margarita" required>
                     </div>
                     <div class="mb-3">
                         <label for="descripcionPlato" class="form-label fw-semibold">Descripción</label>
-                        <textarea class="form-control rounded-3" id="descripcionPlato" rows="3" placeholder="Una deliciosa pizza con tomates frescos y albahaca..."></textarea>
+                        <textarea class="form-control rounded-3" id="descripcionPlato" name="descripcionPlato" rows="3" placeholder="Una deliciosa pizza con tomates frescos y albahaca..."></textarea>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="precioPlato" class="form-label fw-semibold">Precio</label>
                             <div class="input-group">
                                 <span class="input-group-text rounded-start-3">$</span>
-                                <input type="number" class="form-control rounded-end-3" id="precioPlato" placeholder="Ej: 15.50" step="0.01" required>
+                                <input type="number" class="form-control rounded-end-3" id="precioPlato" name="precioPlato" placeholder="Ej: 15.50" step="0.01" required>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="categoriaPlato" class="form-label fw-semibold">Categoría</label>
-                            <select class="form-select rounded-3" id="categoriaPlato" required>
-                                <option selected disabled value="">Selecciona una...</option>
-                                <option>Entrada</option>
-                                <option>Plato Principal</option>
-                                <option>Postre</option>
-                                <option>Bebida</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="imagenPlato" class="form-label fw-semibold">Imagen del Plato</label>
-                        <input class="form-control" type="file" id="imagenPlato">
                     </div>
                     <div class="d-grid mt-4">
-                        <button type="submit" class="btn btn-primary btn-lg rounded-pill" onclick="registrarPlato()">
+                        <button type="button" class="btn btn-primary btn-lg rounded-pill" onclick="registrarPlato()">
                             Guardar Plato
                         </button>
                     </div>
@@ -224,5 +117,5 @@
 <!-- ================================================= -->
 <!-- FIN DE LA SECCIÓN DEL CUERPO - GESTIÓN DE PLATOS -->
 <!-- ================================================= -->
-
+<script> let data = '<?php echo $_GET['data'];?>'</script>
 <script src="<?php echo BASE_URL;?>src/view/js/plato.js"></script>

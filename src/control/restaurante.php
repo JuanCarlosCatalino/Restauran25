@@ -46,7 +46,7 @@ if($tipo == "listarRestaurantes"){
     if($arrRestaurantes){
       for ($i=0; $i < count($arrRestaurantes); $i++) { 
         $id_restaurnte = $arrRestaurantes[$i]->id;
-        $opciones = ' <button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i> Ver</button>
+        $opciones = ' <a href="platos?data='.$id_restaurnte.'"><button type="button" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i> Ver</button><a>
                        <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i> Editar</button>
                        <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Borrar</button>';
         $arrRestaurantes[$i]->options = $opciones;

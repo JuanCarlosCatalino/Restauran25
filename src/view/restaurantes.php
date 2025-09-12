@@ -151,7 +151,7 @@
                         </select>
                     </div>
                     <div class="d-grid mt-4">
-                        <button type="submit" class="btn btn-success btn-lg rounded-pill" onclick="registrarRestaurante();">
+                        <button type="button" class="btn btn-success btn-lg rounded-pill" onclick="registrarRestaurante();">
                             Guardar Restaurante
                         </button>
                     </div>

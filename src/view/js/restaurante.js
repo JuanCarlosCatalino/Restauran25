@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function(){
     listarRestaurantes();
 });
-async function listarRestaurantes(params) {
+async function listarRestaurantes() {
     try {
         let datos = new FormData();
         datos.append('sesion', session_session);
@@ -18,8 +18,9 @@ async function listarRestaurantes(params) {
             let datos = json.contenido;
              datos.forEach(item => {
                 let nuevaFila =  document.createElement("div");
+                nuevaFila.className = 'col-md-6 col-lg-4';
                 nuevaFila.id = item.id;
-                nuevaFila.innerHTML = ` <div class="col-md-6 col-lg-4">
+                nuevaFila.innerHTML = `
                     <div class="card h-100 shadow-sm">
                         <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Fachada del restaurante">
                         <div class="card-body">
@@ -38,7 +39,7 @@ async function listarRestaurantes(params) {
                             </div>
                         </div>
                     </div>
-                </div>`;
+                `;
                 document.querySelector('#contenedor_restaurantes').appendChild(nuevaFila);
                 });
          
@@ -70,6 +71,7 @@ try {
             showConfirmButton: false,
             timer: 1500
             });
+            listarRestaurantes();
     }else{
         Swal.fire({
             icon: "error",
