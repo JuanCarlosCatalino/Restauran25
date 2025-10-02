@@ -33,7 +33,7 @@ CREATE TABLE `platos` (
   `precio` decimal(6,2) NOT NULL,
   `descripcion` text,
   `restaurante_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Volcado de datos para la tabla `platos`
@@ -58,7 +58,31 @@ CREATE TABLE `restaurantes` (
   `horario` varchar(100) NOT NULL,
   `tipo_comida` varchar(50) DEFAULT NULL,
   `calificacion` decimal(2,1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
+CREATE TABLE `client_api` (
+  `id` int  (11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `ruc` varchar(11) NOT NULL,
+  `razon_social` varchar(200) NOT NULL,
+  `telefono` varchar(15) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `fecha_registro` date DEFAULT CURRENT_TIMESTAMP,
+  `estado` int (1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+CREATE TABLE `tokens_api` (
+  `id` int  (11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id_client_api` int (11) NOT NULL,
+  `token` varchar(100) NOT NULL,
+   `fecha_registro` date DEFAULT CURRENT_TIMESTAMP,
+   `estado` int (1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+CREATE TABLE `count_request` (
+  `id` int  (11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `id_token_api` int (11) NOT NULL,
+  `tipo` varchar(30) NOT NULL,
+  `fecha` date DEFAULT CURRENT_TIMESTAMP
+  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Volcado de datos para la tabla `restaurantes`
@@ -80,7 +104,7 @@ CREATE TABLE `sesiones` (
   `fecha_hora_inicio` datetime NOT NULL,
   `fecha_hora_fin` datetime NOT NULL,
   `token` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Volcado de datos para la tabla `sesiones`
@@ -106,7 +130,7 @@ CREATE TABLE `usuarios` (
   `reset_password` int NOT NULL DEFAULT '0',
   `token_password` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL DEFAULT '',
   `fecha_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
