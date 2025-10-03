@@ -17,6 +17,16 @@
                                 <i class="bi bi-shop me-2"></i> Restaurantes
                             </a>
                         </li>
+                       <li class="nav-item">
+     <a class="nav-link text-dark" href="<?php echo BASE_URL;?>token">
+        <i class="bi bi-key me-2"></i> Tokens
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link text-dark" href="<?php echo BASE_URL;?>clientes">
+        <i class="bi bi-people me-2"></i> Clientes
+    </a>
+</li>
                     </ul>
                 </div>
             </div>
