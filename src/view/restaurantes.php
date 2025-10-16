@@ -45,9 +45,9 @@
             <!-- Listado de Restaurantes en Tarjetas -->
             <div class="row g-4" id="contenedor_restaurantes">
                 <!-- Tarjeta de Restaurante 1 -->
-<!--                 <div class="col-md-6 col-lg-4">
+                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm">
-                        <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Fachada del restaurante">
+                        <img src="https://marasrestaurante.com.pe/wp-content/uploads/2025/04/mejores-restaurantes-del-distrito-de-San-Isidro-en-Lima.jpg" class="card-img-top" alt="Fachada del restaurante">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Restaurante "El Buen Sabor"</h5>
                             <p class="card-text text-muted mb-2">
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div> 
 
 
 

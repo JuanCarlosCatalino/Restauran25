@@ -18,17 +18,15 @@
 </head>
 <body class="bg-light">
 
-    <!-- =============================== -->
-    <!-- ENCABEZADO DE LA APLICACIÓN     -->
-    <!-- =============================== -->
+   
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <!-- Logo y Título -->
+           
             <a class="navbar-brand fw-bold" href="#">
                 <i class="bi bi-egg-fried"></i>
-                Restaurante Dashboard
+                Restaurantes
             </a>
-            <!-- Botón para menú móvil -->
+           
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
