@@ -11,8 +11,8 @@ class RestauranteModel
         $this->conexion = $this->conexion->connect();
     }
 
-        public function registrarRestaurante($nombre,$direccion,$telefono,$horario,$especialidad,$calificacion){
-        $sql = $this->conexion->query("INSERT INTO restaurantes (nombre, direccion, telefono, horario, tipo_comida, calificacion) VALUES ('$nombre','$direccion','$telefono','$horario','$especialidad','$calificacion')");
+    public function registrarRestaurante($nombre,$ubicacion,$descripcion,$telefono,$correo,$horario){
+        $sql = $this->conexion->query("INSERT INTO restaurantes (nombre, ubicacion,descripcion, telefono, email, horario) VALUES ('$nombre','$ubicacion','$descripcion','$telefono','$correo','$horario')");
         if ($sql) {
             $sql = $this->conexion->insert_id;
         } else {

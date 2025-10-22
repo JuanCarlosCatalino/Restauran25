@@ -1,27 +1,5 @@
-<!-- ======================================================= -->
-<!-- INICIO DE LA SECCIÓN DEL CUERPO - GESTIÓN DE RESTAURANTES -->
-<!-- ======================================================= -->
-<section class="container-fluid">
-    <div class="row" style="padding-top: 56px;"> <!-- Padding para la barra de navegación fija -->
 
-        <!-- Barra Lateral de Navegación (simulada para contexto) -->
-              <div class="col-lg-2 bg-white vh-100 border-end d-none d-lg-block">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active text-dark" aria-current="page" href="#">
-                                <i class="bi bi-speedometer2 me-2"></i> Resumen
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="<?php echo BASE_URL;?>restaurantes">
-                                <i class="bi bi-shop me-2"></i> Restaurantes
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
+<!-- ======================================================= -->
         <!-- Contenido Principal: Gestión de Restaurantes -->
         <main class="col-lg-10 p-4">
             <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
@@ -107,8 +85,12 @@
                         <input type="text" class="form-control rounded-3" id="nombreRestaurante" name="nombreRestaurante" placeholder="Ej: La Esquina del Sabor" required>
                     </div>
                     <div class="mb-3">
-                        <label for="direccionRestaurante" class="form-label fw-semibold">Dirección</label>
+                        <label for="direccionRestaurante" class="form-label fw-semibold">Ubicación</label>
                         <input type="text" class="form-control rounded-3" id="direccionRestaurante" name="direccionRestaurante" placeholder="Ej: Av. Principal 123, Ciudad" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripción" class="form-label fw-semibold">Descripción</label>
+                        <textarea type="text" class="form-control rounded-3" id="descripción" name="descripción" required></textarea>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -122,19 +104,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="especialidad" class="form-label fw-semibold">Especialidad</label>
-                        <input type="text" class="form-control rounded-3" id="especialidad" name="especialidad" placeholder="Ej: mariscos y ceviches" required></input>
-                    </div>
-                    <div class="mb-3">
-                        <label for="calificacion" class="form-label fw-semibold">Calificacion</label>
-                        <select class="form-select rounded-3" id="calificacion" name="calificacion">
-                            <option selected disabled value="">Selecciona una...</option>
-                            <option value="1">1 estrella</option>
-                            <option value="2">2 estrellas</option>
-                            <option value="3">3 estrellas</option>
-                            <option value="4">4 estrellas</option>
-                            <option value="4">5 estrellas</option>
-                        </select>
+                        <label for="correo" class="form-label fw-semibold">Correo</label>
+                        <input type="text" class="form-control rounded-3" id="correo" name="correo" placeholder="Ej: elbuensabor@gmail.com" required></input>
                     </div>
                     <div class="d-grid mt-4">
                         <button type="button" class="btn btn-success btn-lg rounded-pill" onclick="registrarRestaurante();">

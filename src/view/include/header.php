@@ -32,4 +32,36 @@
             </button>
         </div>
     </nav>
+
+        <section class="container-fluid">
+        <div class="row" style="padding-top: 56px;"> <!-- Padding para la barra de navegación fija -->
+            <!-- Barra Lateral de Navegación -->
+            <div class="col-lg-2 bg-white vh-100 border-end d-none d-lg-block">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active text-dark" aria-current="page" href="<?php echo BASE_URL;?>">
+                                <i class="bi bi-speedometer2 me-2"></i> Resumen
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="<?php echo BASE_URL;?>restaurantes">
+                                <i class="bi bi-shop me-2"></i> Restaurantes
+                            </a>
+                        </li>
+<!--                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="<?php echo BASE_URL;?>token">
+                                <i class="bi bi-key me-2"></i> Tokens
+                            </a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="<?php echo BASE_URL;?>clientes">
+                                <i class="bi bi-people me-2"></i> Clientes API
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+    
     

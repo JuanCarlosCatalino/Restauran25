@@ -1,41 +1,7 @@
 <!-- =================================================== -->
 <!-- INICIO DE LA SECCIÓN DEL CUERPO - GESTIÓN DE PLATOS -->
 <!-- =================================================== -->
-<section class="container-fluid">
-    <div class="row" style="padding-top: 56px;"> <!-- Padding para la barra de navegación fija -->
 
-        <!-- Barra Lateral de Navegación (simulada para contexto) -->
-        <div class="col-lg-2 bg-white vh-100 border-end d-none d-lg-block">
-            <div class="position-sticky pt-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="#">
-                            <i class="bi bi-speedometer2 me-2"></i> Resumen
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active fw-bold" aria-current="page" href="#">
-                            <i class="bi bi-card-checklist me-2"></i> Platos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="#">
-                            <i class="bi bi-shop me-2"></i> Restaurantes
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="#">
-                            <i class="bi bi-bar-chart-line me-2"></i> Reportes
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="#">
-                            <i class="bi bi-gear me-2"></i> Configuración
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
 
         <!-- Contenido Principal: Gestión de Platos -->
         <main class="col-lg-10 p-4">
@@ -64,6 +30,7 @@
                         <tr>
                             <th scope="col">Nombre del Plato</th>
                             <th scope="col">Precio</th>
+                            <th scope="col">categoria</th>
                             <th scope="col" class="text-center">Acciones</th>
                         </tr>
                     </thead>
@@ -99,8 +66,14 @@
                         <div class="col-md-6 mb-3">
                             <label for="precioPlato" class="form-label fw-semibold">Precio</label>
                             <div class="input-group">
-                                <span class="input-group-text rounded-start-3">$</span>
+                                <span class="input-group-text rounded-start-3">S/</span>
                                 <input type="number" class="form-control rounded-end-3" id="precioPlato" name="precioPlato" placeholder="Ej: 15.50" step="0.01" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="categoria" class="form-label fw-semibold">Categoria</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control rounded-end-3" id="categoria" name="categoria"  required>
                             </div>
                         </div>
                     </div>

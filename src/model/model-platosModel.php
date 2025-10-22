@@ -11,8 +11,8 @@ class PlatosModel
         $this->conexion = $this->conexion->connect();
     }
 
-        public function registrarPlato($id_restaurante,$nombre,$descripcion,$precio){
-        $sql = $this->conexion->query("INSERT INTO platos (nombre, precio, descripcion, restaurante_id) VALUES ('$nombre','$precio','$descripcion','$id_restaurante')");
+        public function registrarPlato($id_restaurante,$nombre,$descripcion,$precio,$categoria){
+        $sql = $this->conexion->query("INSERT INTO platos (id_restaurante,nombre, precio, descripcion, categoria) VALUES ('$id_restaurante','$nombre','$precio','$descripcion','$categoria')");
         if ($sql) {
             $sql = $this->conexion->insert_id;
         } else {
@@ -22,7 +22,7 @@ class PlatosModel
     }
     public function listarPlatosByRestaurante($id_restaurante){
         $respuesta = array();
-        $sql = $this->conexion->query("SELECT * FROM platos WHERE restaurante_id = '$id_restaurante'");
+        $sql = $this->conexion->query("SELECT * FROM platos WHERE id_restaurante = '$id_restaurante'");
         while ($objeto = $sql->fetch_object()) {
             array_push($respuesta, $objeto);
         }

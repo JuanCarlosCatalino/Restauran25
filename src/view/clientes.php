@@ -1,27 +1,6 @@
 <!-- ======================================================= -->
 <!-- INICIO DE LA SECCIÓN DEL CUERPO - GESTIÓN DE CLIENTES -->
 <!-- ======================================================= -->
-<section class="container-fluid">
-    <div class="row" style="padding-top: 56px;">
-
-        <!-- Sidebar -->
-        <div class="col-lg-2 bg-white vh-100 border-end d-none d-lg-block">
-            <div class="position-sticky pt-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="<?php echo BASE_URL;?>restaurantes">
-                            <i class="bi bi-shop me-2"></i> Restaurantes
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active text-dark" href="<?php echo BASE_URL;?>clientes">
-                            <i class="bi bi-people me-2"></i> Clientes
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
         <!-- Contenido principal -->
         <main class="col-lg-10 p-4">
             <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
@@ -53,7 +32,7 @@
                             <th>Opciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody_ClientsApi">
                         <!-- Los datos se cargan via JavaScript -->
                     </tbody>
                 </table>

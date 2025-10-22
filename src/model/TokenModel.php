@@ -20,15 +20,9 @@ class TokenModel
         }
         return $sql;
     }
-    
-    public function listarTokens(){
+    public function listarTokens($id_client_Api){
         $respuesta = array();
-        $sql = $this->conexion->query(
-            "SELECT t.id, c.razon_social, t.token, t.fecha_registro, t.estado
-             FROM tokens_api t
-             INNER JOIN client_api c ON t.id_client_api = c.id
-             ORDER BY t.id DESC"
-        );
+        $sql = $this->conexion->query(" SELECT * FROM tokens_api WHERE id_client_api = $id_client_Api ");
         while ($objeto = $sql->fetch_object()) {
             array_push($respuesta, $objeto);
         }

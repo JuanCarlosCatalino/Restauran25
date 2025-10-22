@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(){
     listarTokens();
-    cargarClientes();
 });
 
 // Cargar clientes para el select
-async function cargarClientes() {
+/* async function cargarClientes() {
     try {
         let datos = new FormData();
         datos.append('sesion', session_session);
@@ -30,13 +29,16 @@ async function cargarClientes() {
     } catch (e) {
         console.log('error cargarClientes -- ' + e); 
     }
-}
+} */
 
+    //listar tokens de un cliente específico
 async function listarTokens() {
+    let tbody = document.querySelector("#tbodyTokens");
     try {
         let datos = new FormData();
         datos.append('sesion', session_session);
         datos.append('token', token_token);
+        datos.append('data', data);
         let respu = await fetch(base_url_server+'src/control/TokenController.php?tipo=listarTokens',{
             method: 'POST',
             mode: 'cors',
@@ -46,14 +48,13 @@ async function listarTokens() {
         json = await respu.json();
         if(json.status){
             let datos = json.contenido;
-            let tbody = document.querySelector("#tabla_tokens tbody");
             tbody.innerHTML = "";
-            
+            let count = 0;
+            count++;
             datos.forEach(item => {
                 tbody.innerHTML += `
                     <tr>
-                        <td>${item.id}</td>
-                        <td>${item.razon_social}</td>
+                        <td>${count}</td>
                         <td><code>${item.token}</code></td>
                         <td>${item.fecha_registro}</td>
                         <td><span class="badge ${item.estado == 1 ? 'bg-success' : 'bg-danger'}">${item.estado == 1 ? "Activo" : "Inactivo"}</span></td>
@@ -61,17 +62,38 @@ async function listarTokens() {
                     </tr>
                 `;
             });
+        }else{
+            tbody.innerHTML = `<tr><td colspan="5" class="text-center">${json.mensaje}</td></tr>`;
         }
     } catch (e) {
         console.log('error listarTokens -- ' + e); 
     }
 }
 
+function PostgenerarToken(){
+    Swal.fire({
+        title: "Seguro que quieres generar token?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Si, Generar Token",
+        denyButtonText: `No, cancelar`
+        }).then((result) => {
+
+        if (result.isConfirmed) {
+            generarToken();
+        } else if (result.isDenied) {
+            Swal.fire("Cancelado", "", "error");
+        }
+        });
+}
+
+//generar token para un cliente específico
 async function generarToken() {
     try {
-        let datos = new FormData(frm_new_token);
+        let datos = new FormData();
         datos.append('sesion', session_session);
         datos.append('token', token_token);
+        datos.append('data', data);
         let respuesta = await fetch(base_url_server+'src/control/TokenController.php?tipo=generarToken',{
             method: 'POST',
             mode: 'cors',
@@ -96,10 +118,6 @@ async function generarToken() {
                     Swal.fire('Copiado!', 'Token copiado al portapapeles', 'success');
                 }
             });
-            
-            // Cerrar modal y limpiar formulario
-            $('#tokenModal').modal('hide');
-            document.getElementById('frm_new_token').reset();
             listarTokens();
         }else{
             Swal.fire({

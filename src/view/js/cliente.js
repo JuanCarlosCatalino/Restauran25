@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', function(){
     listarClientes();
 });
 
+
 async function listarClientes() {
+    let tbody = document.querySelector("#tbody_ClientsApi");
     try {
         let datos = new FormData();
         datos.append('sesion', session_session);
@@ -16,13 +18,13 @@ async function listarClientes() {
         json = await respu.json();
         if(json.status){
             let datos = json.contenido;
-            let tbody = document.querySelector("#tabla_clientes tbody");
             tbody.innerHTML = "";
-            
+            let count = 0;
+            count++;
             datos.forEach(item => {
                 tbody.innerHTML += `
                     <tr>
-                        <td>${item.id}</td>
+                        <td>${count}</td>
                         <td>${item.ruc}</td>
                         <td>${item.razon_social}</td>
                         <td>${item.telefono}</td>
@@ -33,6 +35,12 @@ async function listarClientes() {
                     </tr>
                 `;
             });
+        }else{
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="8" class="text-center"> ${json.mensaje} </td>
+                </tr>
+            `;
         }
     } catch (e) {
         console.log('error function -- ' + e); 
@@ -40,6 +48,19 @@ async function listarClientes() {
 }
 
 async function registrarCliente() {
+    let modal_new_cliente = document.getElementById('clienteModal');
+    let frm_new_cliente = document.getElementById('frm_new_cliente');
+    let ruc = document.getElementById('ruc').value;
+
+    if(ruc.length < 11){
+        Swal.fire({
+            icon: "warning",    
+            text: "El RUC debe tener 11 dígitos",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        return;
+    }
     try {
         let datos = new FormData(frm_new_cliente);
         datos.append('sesion', session_session);
@@ -52,6 +73,9 @@ async function registrarCliente() {
         });
         json = await respuesta.json();
         if(json.status){
+            let modal = bootstrap.Modal.getInstance(modal_new_cliente);
+            modal.hide();
+            frm_new_cliente.reset();
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -59,9 +83,6 @@ async function registrarCliente() {
                 showConfirmButton: false,
                 timer: 1500
             });
-            // Cerrar modal y limpiar formulario
-            $('#clienteModal').modal('hide');
-            document.getElementById('frm_new_cliente').reset();
             listarClientes();
         }else{
             Swal.fire({

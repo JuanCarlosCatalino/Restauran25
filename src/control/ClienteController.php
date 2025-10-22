@@ -42,16 +42,18 @@ if($tipo == "listarClientes"){
     $arr_Respuesta = array('status'=> false, 'mensaje'=>'Error, sesion');
    if ($objSesion->verificar_sesion_si_activa($id_sesion, $token)) {
     $arrClientes = $objCliente->listarClientes();
-    if($arrClientes){
+    if(count($arrClientes) > 0){
       for ($i=0; $i < count($arrClientes); $i++) { 
         $id_cliente = $arrClientes[$i]->id;
         $opciones = '<button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i> Editar</button>
-                     <button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Borrar</button>';
+                     <a href="token?data='.$id_cliente.'"><button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-key"></i> Tokens</button></a>';
         $arrClientes[$i]->options = $opciones;
       }
         $arr_Respuesta['status'] = true;
         $arr_Respuesta['mensaje'] = 'ok';
         $arr_Respuesta['contenido'] = $arrClientes;
+    }else{
+        $arr_Respuesta = array('status'=> false, 'mensaje'=>'No hay clientes registrados');
     }
    }
    echo json_encode($arr_Respuesta);

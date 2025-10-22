@@ -1,8 +1,8 @@
-
 document.addEventListener('DOMContentLoaded', function(){
     listarRestaurantes();
 });
 async function listarRestaurantes() {
+    let bodyTable = document.querySelector('#contenedor_restaurantes');
     try {
         let datos = new FormData();
         datos.append('sesion', session_session);
@@ -15,6 +15,7 @@ async function listarRestaurantes() {
         });
         json = await respu.json();
         if(json.status){
+            bodyTable.innerHTML = '';
             let datos = json.contenido;
              datos.forEach(item => {
                 let nuevaFila =  document.createElement("div");
@@ -22,16 +23,15 @@ async function listarRestaurantes() {
                 nuevaFila.id = item.id;
                 nuevaFila.innerHTML = `
                     <div class="card h-100 shadow-sm">
-                        <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Fachada del restaurante">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">${item.nombre}</h5>
                             <p class="card-text text-muted mb-2">
-                                <i class="bi bi-geo-alt-fill me-2"></i>${item.direccion}
+                                <i class="bi bi-geo-alt-fill me-2"></i>${item.ubicacion}
                             </p>
                             <p class="card-text text-muted">
                                 <i class="bi bi-telephone-fill me-2"></i>${item.telefono}
                             </p>
-                            <span class="badge bg-success">Activo</span>
+                            <span class="badge bg-success">${item.estado}</span>
                         </div>
                         <div class="card-footer bg-white border-top-0 d-flex justify-content-end">
                             <div class="btn-group" role="group">
@@ -49,9 +49,8 @@ async function listarRestaurantes() {
     }
 }
 
-
-
 async function registrarRestaurante() {
+    let formNewRestaurante = document.getElementById('frm_new_restaurante');
 try {
     let datos = new FormData(frm_new_restaurante);
     datos.append('sesion', session_session);
@@ -64,6 +63,10 @@ try {
     });
     json = await respuesta.json();
     if(json.status){
+        let modal = document.getElementById('restauranteModal');
+        let modalInstance = bootstrap.Modal.getInstance(modal);
+        modalInstance.hide();
+        formNewRestaurante.reset();
         Swal.fire({
             position: "top-end",
             icon: "success",

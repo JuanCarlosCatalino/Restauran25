@@ -1,7 +1,7 @@
 <?php
 
 const BD_HOST = 'localhost';
-const BD_NAME = 'restnew';
+const BD_NAME = 'restaurantefinal';
 const BD_USER = 'root';
 const BD_PASSWORD = '';
 

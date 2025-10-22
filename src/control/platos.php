@@ -21,11 +21,13 @@ if($tipo == "registrarPlato"){
       $id_restaurante = trim($_POST['data']);
       $nombre = trim($_POST['nombrePlato']);
       $descripcion = $_POST['descripcionPlato'];
-      $precio = $_POST['precioPlato'];
-      if($nombre == "" || $descripcion  == ""|| $precio == ""){
+      $precio ='S/'. trim($_POST['precioPlato']);
+      $categoria = trim($_POST['categoria']);
+
+      if($id_restaurante == ""|| $nombre == "" || $categoria == ""){
          $arr_Respuesta = array('status'=> false, 'mensaje'=>'Datos vacios');
       }else{
-        $id_new_plato = $objPlato->registrarPlato($id_restaurante,$nombre,$descripcion,$precio);
+        $id_new_plato = $objPlato->registrarPlato($id_restaurante,$nombre,$descripcion,$precio,$categoria);
         if($id_new_plato > 0){
              $arr_Respuesta = array('status'=> true, 'mensaje'=>'registrado correctamente');
         }else{
@@ -37,12 +39,14 @@ if($tipo == "registrarPlato"){
  echo json_encode($arr_Respuesta);
 }
 
+//listar platos de un restaurante
 if($tipo == "listarPlatos"){
     $arr_Respuesta = array('status'=> false, 'mensaje'=>'Error, sesion');
    if ($objSesion->verificar_sesion_si_activa($id_sesion, $token)) {
     $id_restaurante = trim($_POST['data']);
+   
     $arrPlatos = $objPlato->listarPlatosByRestaurante($id_restaurante);
-    if($arrPlatos){
+    if(count($arrPlatos) > 0){
       for ($i=0; $i < count($arrPlatos); $i++) { 
         $id_platos = $arrPlatos[$i]->id;
         $opciones = '<div class="btn-group" role="group">
@@ -55,6 +59,9 @@ if($tipo == "listarPlatos"){
         $arr_Respuesta['status'] = true;
         $arr_Respuesta['mensaje'] = 'ok';
         $arr_Respuesta['contenido'] = $arrPlatos;
+    }else{
+        $arr_Respuesta['status'] = false;
+        $arr_Respuesta['mensaje'] = 'No hay platos registrados';
     }
 
    }

@@ -20,13 +20,15 @@ if($tipo == "generarToken"){
     $arr_Respuesta = array('status'=> false, 'mensaje'=>'Error, sesion');
    if ($objSesion->verificar_sesion_si_activa($id_sesion, $token)) {
      if($_POST){
-      $id_client_api = trim($_POST['id_client_api']);
-      
+      $id_client_api = trim($_POST['data']);
       if($id_client_api == ""){
-         $arr_Respuesta = array('status'=> false, 'mensaje'=>'Seleccione un cliente');
+         $arr_Respuesta = array('status'=> false, 'mensaje'=>'Indicar cliente');
       }else{
-        $token_generado = bin2hex(random_bytes(16));
-        $id_new_token = $objToken->generarToken($id_client_api, $token_generado);
+        $token_generado = bin2hex(random_bytes(32));
+       $fechaActual = date('Ymd');
+       $token_final = $token_generado.'-'.$fechaActual.'-'.$id_client_api;
+
+        $id_new_token = $objToken->generarToken($id_client_api, $token_final);
         if($id_new_token > 0){
              $arr_Respuesta = array('status'=> true, 'mensaje'=>'Token generado correctamente', 'token' => $token_generado);
         }else{
@@ -41,8 +43,9 @@ if($tipo == "generarToken"){
 if($tipo == "listarTokens"){
     $arr_Respuesta = array('status'=> false, 'mensaje'=>'Error, sesion');
    if ($objSesion->verificar_sesion_si_activa($id_sesion, $token)) {
-    $arrTokens = $objToken->listarTokens();
-    if($arrTokens){
+    $id_cliente = isset($_POST['data']) ? intval($_POST['data']) : 0;
+    $arrTokens = $objToken->listarTokens($id_cliente);
+    if(count($arrTokens) > 0){
       for ($i=0; $i < count($arrTokens); $i++) { 
         $id_token = $arrTokens[$i]->id;
         $opciones = '<button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i> Editar</button>
@@ -52,6 +55,8 @@ if($tipo == "listarTokens"){
         $arr_Respuesta['status'] = true;
         $arr_Respuesta['mensaje'] = 'ok';
         $arr_Respuesta['contenido'] = $arrTokens;
+    }else{
+        $arr_Respuesta = array('status'=> false, 'mensaje'=>'No hay tokens registrados');
     }
    }
    echo json_encode($arr_Respuesta);
