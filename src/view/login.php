@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php 
+include 'login/login32.php';
+?>
+<!-- <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -95,8 +98,8 @@
     }
   </style>
   <script>
-    const base_url = '<?php echo BASE_URL; ?>';
-    const base_url_server = '<?php echo BASE_URL_SERVER; ?>';
+    const base_url = '<?php /* echo BASE_URL; */ ?>';
+    const base_url_server = '<?php /* echo BASE_URL_SERVER; */ ?>';
   </script>
 </head>
 
@@ -114,9 +117,8 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </body>
-<script src="<?php echo BASE_URL; ?>src/view/js/sesion.js"></script>
-<!-- Sweet Alerts Js-->
-</html>
+<script src="<?php /* echo BASE_URL; */ ?>src/view/js/sesion.js"></script>
+</html> -->
 
 
 

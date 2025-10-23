@@ -59,6 +59,11 @@
                                 <i class="bi bi-people me-2"></i> Clientes API
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <button class="nav-link text-dark" onclick="cerrar_sesion();">
+                                <i class="bi bi-people me-2"></i> Cerrar Sesión
+</button>
+                        </li>
                     </ul>
                 </div>
             </div>

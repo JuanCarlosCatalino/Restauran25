@@ -45,7 +45,7 @@ if($tipo == "listarClientes"){
     if(count($arrClientes) > 0){
       for ($i=0; $i < count($arrClientes); $i++) { 
         $id_cliente = $arrClientes[$i]->id;
-        $opciones = '<button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i> Editar</button>
+        $opciones = '<button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#EditarclienteModal" onclick="listarCliente('.$id_cliente.');"><i class="bi bi-pencil"></i> Editar</button>
                      <a href="token?data='.$id_cliente.'"><button type="button" class="btn btn-sm btn-outline-danger"><i class="bi bi-key"></i> Tokens</button></a>';
         $arrClientes[$i]->options = $opciones;
       }
@@ -57,5 +57,47 @@ if($tipo == "listarClientes"){
     }
    }
    echo json_encode($arr_Respuesta);
+}
+if($tipo == "listarClienteDatos"){
+    $arr_Respuesta = array('status'=> false, 'mensaje'=>'Error, sesion');
+   if ($objSesion->verificar_sesion_si_activa($id_sesion, $token)) {
+    if($_POST){
+        $id_cliente = $_POST['id_cliente'];
+        $arrClientes = $objCliente->listarClientePorID($id_cliente);
+        if($arrClientes){
+            $arr_Respuesta['status'] = true;
+            $arr_Respuesta['mensaje'] = 'ok';
+            $arr_Respuesta['contenido'] = $arrClientes;
+        }else{
+            $arr_Respuesta = array('status'=> false, 'mensaje'=>'No hay datos del cliente');
+        }
+    }
+   }
+   echo json_encode($arr_Respuesta);
+}
+if($tipo == "editarCliente"){
+    $arr_Respuesta = array('status'=> false, 'mensaje'=>'Error, sesion');
+   if ($objSesion->verificar_sesion_si_activa($id_sesion, $token)) {
+     if($_POST){
+      $id_cliente = trim($_POST['id_cliente']);
+      $ruc = trim($_POST['new_ruc']);
+      $razon_social = $_POST['new_razon_social'];
+      $telefono = $_POST['new_telefono'];
+      $correo = $_POST['new_correo'];
+      $estado = $_POST['estado'];
+      
+      if($ruc == "" || $razon_social == "" || $telefono == "" || $correo == "" || $estado == ""){
+         $arr_Respuesta = array('status'=> false, 'mensaje'=>'Datos vacios');
+      }else{
+        $sql = $objCliente->actualizarCliente($id_cliente, $ruc, $razon_social, $telefono, $correo, $estado);
+        if($sql){
+             $arr_Respuesta = array('status'=> true, 'mensaje'=>'Cliente actualizado correctamente');
+        }else{
+             $arr_Respuesta = array('status'=> false, 'mensaje'=>'Error al actualizar cliente');
+        }
+      }
+     }
+   }
+ echo json_encode($arr_Respuesta);
 }
 ?>

@@ -11,6 +11,11 @@ class ClienteModel
         $this->conexion = $this->conexion->connect();
     }
 
+    public function listarClientePorID($id_cliente){
+        $sql = $this->conexion->query("SELECT * FROM client_api WHERE id = '$id_cliente'");
+        $respuesta = $sql->fetch_object();
+        return $respuesta;
+    }
     public function registrarCliente($ruc, $razon_social, $telefono, $correo){
         $sql = $this->conexion->query("INSERT INTO client_api (ruc, razon_social, telefono, correo) VALUES ('$ruc','$razon_social','$telefono','$correo')");
         if ($sql) {
@@ -21,6 +26,10 @@ class ClienteModel
         return $sql;
     }
     
+    public function actualizarCliente($id_cliente, $ruc, $razon_social, $telefono, $correo, $estado){
+        $sql = $this->conexion->query("UPDATE client_api SET ruc = '$ruc', razon_social = '$razon_social', telefono = '$telefono', correo = '$correo', estado = '$estado' WHERE id = $id_cliente");
+        return $sql;
+    }
     public function listarClientes(){
         $respuesta = array();
         $sql = $this->conexion->query("SELECT * FROM client_api");

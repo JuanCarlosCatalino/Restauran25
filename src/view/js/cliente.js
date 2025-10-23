@@ -47,6 +47,71 @@ async function listarClientes() {
     }
 }
 
+function listarCliente(id){
+ let id_cliente = document.getElementById('id_cliente');
+ id_cliente.value = parseInt(id);
+ listarClienteDatos(id);
+}
+
+async function listarClienteDatos(id_cliente) {
+    try {
+        let datos = new FormData();
+        datos.append('sesion', session_session);   
+        datos.append('token', token_token);
+        datos.append('id_cliente', id_cliente);
+        let respuesta = await fetch(base_url_server+'src/control/ClienteController.php?tipo=listarClienteDatos',{
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: datos
+        });
+        json = await respuesta.json();
+        if(json.status){
+            let datos = json.contenido;
+            document.getElementById('id_cliente').value = datos.id;
+            document.getElementById('new_ruc').value = datos.ruc;
+            document.getElementById('new_razon_social').value = datos.razon_social;
+            document.getElementById('new_telefono').value = datos.telefono;
+            document.getElementById('new_correo').value = datos.correo;
+            document.getElementById('estado').value = datos.estado;
+        }
+    } catch (e) {
+        console.log("error function || " + e);
+    }
+}
+async function editarCliente() {
+    let frm_editar_cliente = document.getElementById('frm_editar_cliente');
+    try {
+        let datos = new FormData(frm_editar_cliente);
+        datos.append('sesion', session_session);
+        datos.append('token', token_token);
+        let respuesta = await fetch(base_url_server+'src/control/ClienteController.php?tipo=editarCliente',{
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            body: datos
+        });
+        json = await respuesta.json();
+        if(json.status){
+            let modal_editar_cliente = document.getElementById('EditarclienteModal');
+            let modal = bootstrap.Modal.getInstance(modal_editar_cliente);
+            modal.hide();
+            frm_editar_cliente.reset();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: json.mensaje,
+                showConfirmButton: false,
+                timer: 1500
+            });
+            listarClientes();
+        }
+    } catch (e) {
+        console.log("error function || " + e);
+    }
+    
+}
+
 async function registrarCliente() {
     let modal_new_cliente = document.getElementById('clienteModal');
     let frm_new_cliente = document.getElementById('frm_new_cliente');

@@ -5,6 +5,40 @@ require_once('../model/apiModel.php');
 $objApi = new ApiModel();
 $tipo = $_GET['tipo'];
 
+$token = $_POST['token'] ?? '';
+
+$tokenn = explode("-",$token);
+
+if(count($tokenn) != 3 || $tokenn[2] =='' ){
+    echo json_encode(array(
+        'status' => false,
+        'mensaje' => 'Token inválido',
+        'contenido' => array()
+    ));
+    exit;
+}
+//validar cliente
+$arrCliente = $objApi->validarCliente($tokenn[2]);
+if(!$arrCliente){
+    echo json_encode(array(
+        'status' => false,
+        'mensaje' => 'Cliente no autorizado',
+        'contenido' => array()
+    ));
+    exit;
+}else{
+//validar token
+   $arrToken = $objApi->validarToken($token, $arrCliente->id);
+   if(!$arrToken){
+    echo json_encode(array(
+        'status' => false,
+        'mensaje' => 'Token inválido o expirado',
+        'contenido' => array()
+    ));
+    exit;
+} 
+}
+
 // Respuesta por defecto
 $arr_Respuesta = array(
     'status' => false,

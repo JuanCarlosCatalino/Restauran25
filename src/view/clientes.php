@@ -77,6 +77,51 @@
         </div>
     </div>
 </div>
+
+<!-- Modal editar cliente -->
+<div class="modal fade" id="EditarclienteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 shadow-lg">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title fw-bold">Actualizazr Cliente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form id="frm_editar_cliente">
+                    <input type="hidden" name="id_cliente" id="id_cliente" value="">
+                    <div class="mb-3">
+                        <label class="form-label">RUC</label>
+                        <input type="text" class="form-control" name="new_ruc" id="new_ruc" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Razón Social</label>
+                        <input type="text" class="form-control" name="new_razon_social" id="new_razon_social" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" name="new_telefono" id="new_telefono" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Correo</label>
+                        <input type="email" class="form-control" name="new_correo" id="new_correo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Estado</label>
+                        <select class="form-select" name="estado" id="estado" required>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="d-grid mt-4">
+                        <button type="button" class="btn btn-success btn-lg rounded-pill" onclick="editarCliente();">
+                            Editar Cliente
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- ======================================================= -->
 <!-- FIN DE LA SECCIÓN DEL CUERPO - GESTIÓN DE CLIENTES -->
 <!-- ======================================================= -->

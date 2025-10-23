@@ -12,10 +12,22 @@ class ApiModel
         $this->conexion = $this->conexion->connect();
     }
 
-    /**
-     * Listar todos los restaurantes (sin platos)
-     * @return array Lista de restaurantes
-     */
+    public function validarCliente($idCliente){
+        $sql = $this->conexion->query("SELECT * FROM client_api WHERE id = '$idCliente' AND estado = 1");
+        if($sql->num_rows > 0){
+            return $sql->fetch_object();
+        }
+        return null;
+    }
+    public function validarToken($token, $idCliente){
+        $sql = $this->conexion->query("SELECT * FROM tokens_api WHERE token = '$token' AND id_client_api = '$idCliente' AND estado = 1");
+        if($sql->num_rows > 0){
+            return $sql->fetch_object();
+        }
+        return null;
+    }
+
+   // Listar todos los restaurantes (sin platos)
     public function listarRestaurantes(){
         $respuesta = array();
         $sql = $this->conexion->query("SELECT * FROM restaurantes ORDER BY nombre ASC");
