@@ -1,7 +1,3 @@
-<!-- =================================================== -->
-<!-- INICIO DE LA SECCIÓN DEL CUERPO - GESTIÓN DE PLATOS -->
-<!-- =================================================== -->
-
 
         <!-- Contenido Principal: Gestión de Platos -->
         <main class="col-lg-10 p-4">
