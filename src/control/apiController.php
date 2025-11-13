@@ -1,5 +1,19 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+// Permitir métodos usados
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+// Permitir cabeceras que el cliente envía
+header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+// Si vas a usar cookies / credenciales:
+ // header("Access-Control-Allow-Credentials: true");
+// Responder rápido al preflight (OPTIONS)
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    // Opcional: terminar aquí con 200 para preflight
+    http_response_code(200);
+    exit;
+}
+
 require_once('../model/apiModel.php');
 
 $objApi = new ApiModel();
