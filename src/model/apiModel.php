@@ -37,6 +37,16 @@ class ApiModel
         return $respuesta;
     }
 
+    //listarTodos los platos * prueba *
+    public function listarTodosLosPlatos(){
+        $respuesta = array();
+        $sql = $this->conexion->query("SELECT * FROM platos ORDER BY nombre ASC");
+        while ($objeto = $sql->fetch_object()) {
+            array_push($respuesta, $objeto);
+        }
+        return $respuesta;
+    }
+
     /**
      * Listar todos los restaurantes con sus platos incluidos
      * @return array Lista de restaurantes con array de platos

@@ -42,7 +42,7 @@ if(!$arrCliente){
 // Respuesta por defecto
 $arr_Respuesta = array(
     'status' => false,
-    'mensaje' => '',
+    'mensaje' => 'default',
     'contenido' => array()
 );
 
@@ -84,6 +84,7 @@ if($tipo == "listarRestaurantesConPlatos"){
 /**
  * Obtener un restaurante específico con sus platos
  */
+
 if($tipo == "obtenerRestauranteConPlatos"){
     $id_restaurante = $_REQUEST['id'];
     $restaurante = $objApi->obtenerRestauranteConPlatos($id_restaurante);
@@ -169,6 +170,18 @@ if($tipo == "listarPlatosPorRestaurante"){
         $arr_Respuesta['contenido'] = $arrPlatos;
     } else {
         $arr_Respuesta['mensaje'] = 'No se encontraron platos para este restaurante';
+    }
+    echo json_encode($arr_Respuesta);
+}
+
+if($tipo == "listarTodosLosPlatos"){
+    $arrPlatos = $objApi->listarTodosLosPlatos();
+    if($arrPlatos){
+        $arr_Respuesta['status'] = true;
+        $arr_Respuesta['mensaje'] = 'platos obtenidos correctamente';
+        $arr_Respuesta['contenido'] = $arrPlatos;
+    } else {
+        $arr_Respuesta['mensaje'] = 'No se encontraron platos';
     }
     echo json_encode($arr_Respuesta);
 }
